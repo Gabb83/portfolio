@@ -1,8 +1,8 @@
-import Image from 'next/image';
+import Image, {StaticImageData} from 'next/image';
 import Link from 'next/link';
 
 type PropsCardProjeto = {
-  src: any;
+  src: StaticImageData;
   href?: string;
   alt: string;
 }

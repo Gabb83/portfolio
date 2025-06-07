@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 type PropsRedesSociais = {
   href: string;
-  src: any;
+  src: StaticImageData;
   alt: string;
 }
 
