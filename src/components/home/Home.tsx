@@ -1,3 +1,5 @@
+'use client'
+
 import IconGitHub from '@/assets/icons/redes/icon-github.svg';
 import IconLinkedin from '@/assets/icons/redes/icon-linkedin.svg';
 import IconInstagram from '@/assets/icons/redes/icon-instagram.svg';
@@ -5,6 +7,7 @@ import RedesSociais from '@/components/home/RedesSociais';
 import Eu from '@/assets/eu.jpeg'; 
 import Image from 'next/image';
 import Link from 'next/link';
+import { TypeAnimation } from 'react-type-animation';
 
 const REDES = [
   {nome: 'linkedIn', href: 'https://www.linkedin.com/in/gabriel-evangelista-5a1a5a2aa/', src: IconLinkedin},
@@ -18,11 +21,35 @@ export default function Home(){
       <Image
         alt='eu'
         src={Eu}
-        className='w-[250px] border-[2px] border-[#16b362] rounded-full'
+        className='w-[250px] border-[2px] border-[#16b362] rounded-full animate-float'
       />
       <div>
-        <p className='text-[25px] md:text-[35px] font-[600] mb-4'>Olá, meu nome é <span className='text-[#189655]'>Gabriel</span></p>
-        <p className='text-[20px] md:text-[25px] font-[600] mb-3'>Eu sou <span className='text-[#189655]'>Desenvolvedor Front-end</span></p>
+        <p className='text-[25px] md:text-[35px] font-[600] mb-4'>
+          <TypeAnimation
+            sequence={[
+              'Olá, meu nome é ', 800, 'Olá, meu nome é Gabriel',
+            ]}
+            
+            speed={1}
+            wrapper="span"
+            repeat={0}
+            className="text-[#189655]"
+          />
+        </p>
+        <p className='text-[20px] md:text-[25px] font-[600] mb-3'>
+          <span>Eu sou</span>
+          <span className='text-[#189655]'>
+            <TypeAnimation
+              sequence={[
+                3800, // tempo para o primeiro terminar
+                ' Desenvolvedor Front-end',
+              ]}
+              speed={60}
+              
+              repeat={0}
+            />
+          </span>
+        </p>
         <p className='text-[18px] md:text-[20px]'>Atuo em Desenvolvimento web, como foco em Front-end e suas tecnologias. Transformo ideias em interfaces intuitivas e responsivas. Atualmente, sou graduando em Ciência da Computação.</p>
         <div className='flex md:flex-row items-center gap-3 pt-3'>
           { REDES.map(({nome, href, src}) => (

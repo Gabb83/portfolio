@@ -33,9 +33,9 @@ export default function Header() {
   return (
     <header className='relative z-50'>
       {/* Top bar */}
-      <div className='flex justify-between items-center p-4'>
+      <div className='flex justify-between items-center py-4 px-2'>
         <button className='md:hidden' onClick={() => setMenuOpen(true)}>
-          <Menu className='' />
+          <Menu className='cursor-pointer'/>
         </button>
 
         <h1 className='text-xl font-bold'>
@@ -55,12 +55,12 @@ export default function Header() {
           <div className='flex items-center gap-2'>
             <Image alt='ícone sol' src={!darkMode ? IconSol : IconSolNeon} className='w-[30px]' />
             <div
-              className='w-[50px] h-[25px] rounded-full bg-gray-300 dark:bg-gray-700 flex items-center p-[2px] cursor-pointer'
+              className='w-[50px] h-[26px] rounded-full bg-gray-300 dark:bg-gray-700 flex items-center p-[2px] cursor-pointer'
               onClick={handleButtonDarkMode}
             >
               <div
                 className={`w-[22px] h-[22px] rounded-full transition-transform duration-700 ${
-                  darkMode ? 'translate-x-[25px] bg-black' : 'translate-x-0 bg-white'
+                  darkMode ? 'translate-x-[24px] bg-black' : 'translate-x-0 bg-white'
                 }`}
               />
             </div>
@@ -68,16 +68,15 @@ export default function Header() {
           </div>
         </div>
       </div>
-
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-zinc-900 bg-opacity-100 rounded-r-2xl shadow-lg transform transition-transform duration-300 ease-in-out ${
-          menuOpen ? 'translate-x-0' : '-translate-x-full'
-        } md:hidden`}
+        className={`fixed top-0 left-0 h-full w-64  bg-opacity-100 rounded-r-2xl shadow-lg transform transition-transform duration-300 ease-in-out ${
+          menuOpen ? 'translate-x-0' : '-translate-x-full'}
+          ${darkMode ? 'dark:bg-zinc-900' : 'bg-white'} md:hidden`}
       >
         <div className='flex justify-between items-center p-4 border-b border-gray-200 dark:border-zinc-700'>
           <h2 className='text-lg font-bold'>Menu</h2>
           <button onClick={() => setMenuOpen(false)}>
-            <X className='text-black dark:text-white' />
+            <X className={`${!darkMode ? 'text-black' : 'dark:text-white' } cursor-pointer`} />
           </button>
         </div>
         <nav className='flex flex-col p-4 gap-4 font-semibold'>
@@ -85,7 +84,7 @@ export default function Header() {
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}
-              className='hover:text-green-600'
+              className='hover:text-green-600 duration-200'
               onClick={() => setMenuOpen(false)}
             >
               {item}
@@ -94,12 +93,12 @@ export default function Header() {
           <div className='flex items-center gap-2 mt-4'>
             <Image alt='ícone sol' src={!darkMode ? IconSol : IconSolNeon} className='w-[25px]' />
             <div
-              className='w-[50px] h-[25px] rounded-full bg-gray-300 dark:bg-gray-700 flex items-center p-[2px] cursor-pointer'
+              className='w-[50px] h-[26px] rounded-full bg-gray-300 dark:bg-gray-700 flex items-center p-[2px] cursor-pointer'
               onClick={handleButtonDarkMode}
             >
               <div
                 className={`w-[22px] h-[22px] rounded-full transition-transform duration-700 ${
-                  darkMode ? 'translate-x-[25px] bg-black' : 'translate-x-0 bg-white'
+                  darkMode ? 'translate-x-[24px] bg-black' : 'translate-x-0 bg-white'
                 }`}
               />
             </div>
