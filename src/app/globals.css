@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+.side-menu {
+  background-color: var(--card-bg-light);
+}
+
+html.dark .side-menu {
+  background-color: var(--card-bg-dark);
+}
+
 html.dark {
   color-scheme: dark;
 }
@@ -23,5 +31,20 @@ body {
   .animate-border {
     background-size: 200% 200%;
     animation: borderMove 3s linear infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@media (max-width: 639px) {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 }
