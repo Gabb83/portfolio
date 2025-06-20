@@ -1,10 +1,9 @@
 type PropsInput = {
   label: string;
-  formato?: string;
 }
 
 export default function Input({
-  label, formato
+  label
 } : PropsInput){
   return(
     <input 
