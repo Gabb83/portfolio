@@ -3,19 +3,25 @@ import Home from '@/components/home/Home';
 import Skills from '@/components/skills/Skills';
 import Experience from '@/components/experience/Experience';
 import SectionWrapper from '@/components/SectionWrapper';
+import Contact from '@/components/contact/Contact';
 
 export default function Page() {
   return(
-    <div className='h-screen'>
-      <Header />
-      <SectionWrapper>
-        <Home />
-      </SectionWrapper>
+    <div>
+      <div className='px-[30px]'>
+        <Header />
+        <SectionWrapper>
+          <Home />
+        </SectionWrapper>
+        <SectionWrapper delay={0.2}>
+          <Experience />
+        </SectionWrapper>
+        <SectionWrapper delay={0.2}>
+          <Skills />
+        </SectionWrapper>
+      </div>
       <SectionWrapper delay={0.2}>
-        <Experience />
-      </SectionWrapper>
-      <SectionWrapper delay={0.2}>
-        <Skills />
+        <Contact />
       </SectionWrapper>
     </div>
   );
