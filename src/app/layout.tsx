@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
+    <html>
       <body
         className={`${poppins.className} antialiased text-[16px]`}
       >

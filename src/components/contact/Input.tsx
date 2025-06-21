@@ -7,8 +7,8 @@ export default function Input({
 } : PropsInput){
   return(
     <input 
-      placeholder={label}
-      className='h-[40px] border border-gray-600 rounded-sm p-2 hover:opacity-50 transition-all duration-300'
+      placeholder={label + '*'}
+      className='w-full h-[40px] border border-gray-600 rounded-sm p-2 hover:opacity-50 transition-all duration-300'
     />
   );
 }

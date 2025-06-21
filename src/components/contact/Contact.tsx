@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -19,8 +21,12 @@ export default function Contato(){
     {nome: 'instagram', href: 'https://www.instagram.com/ev.gabrieel/', src: IconInstagram},
   ];
 
+  const botaoEnviar = () => {
+    alert('Mensagem Enviada :)');
+  }
+
   return(
-    <div className='py-4 bg-[var(--contato-bg-light)] dark:bg-[var(--contato-bg-dark)] px-[30px] lg:px-0'>
+    <div id='contact' className='py-4 bg-[var(--contato-bg-light)] dark:bg-[var(--contato-bg-dark)] px-[30px] lg:px-0'>
       <p className='font-[700] text-center text-[25px] py-5'>Contact</p>
       <div className='flex flex-col sm:flex-row items-center justify-center sm:justify-around gap-8 sm:gap-4'>
         <div>
@@ -56,6 +62,7 @@ export default function Contato(){
           ></textarea>
           <div className='flex flex-row justify-end'>
             <button
+              onClick={botaoEnviar}
               className='w-[120px] h-[40px] text-white bg-gray-700 rounded-sm cursor-pointer p-2 hover:opacity-90 transition-all duration-300 ease-in-out'
             >
               Enviar

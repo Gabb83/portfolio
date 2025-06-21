@@ -4,10 +4,11 @@ import Skills from '@/components/skills/Skills';
 import Experience from '@/components/experience/Experience';
 import SectionWrapper from '@/components/SectionWrapper';
 import Contact from '@/components/contact/Contact';
+import Footer from '@/components/Footer';
 
 export default function Page() {
   return(
-    <div>
+    <div className='py-2'>
       <div className='px-[30px]'>
         <Header />
         <SectionWrapper>
@@ -22,6 +23,9 @@ export default function Page() {
       </div>
       <SectionWrapper delay={0.2}>
         <Contact />
+      </SectionWrapper>
+      <SectionWrapper delay={0.2}>
+        <Footer />
       </SectionWrapper>
     </div>
   );
