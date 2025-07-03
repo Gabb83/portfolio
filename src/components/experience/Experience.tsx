@@ -36,7 +36,7 @@ export default function Experience(){
             </div>
           ))}
         </div>
-        <div className='hidden lg:block w-[450px] bg-[#292929] text-white p-4 rounded'>
+        <div className='painel w-[450px] bg-[#292929] text-white p-4 rounded'>
           <p className='text-[17px] font-bold'>Descrição do Projeto:</p>
           <p className='py-3'>
             {descricaoAtual || 'Passe o mouse sobre um projeto para ver sua descrição.'}

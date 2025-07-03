@@ -14,7 +14,7 @@ href, src, alt
     <Link 
       href={href} 
       target='_blank'
-      className='bg-white border border-green-500 rounded-full p-1'
+      className='bg-white rounded-full p-1'
     >
       <Image
         alt={alt}
