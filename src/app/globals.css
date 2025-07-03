@@ -60,3 +60,13 @@ body {
     animation: float 6s ease-in-out infinite;
   }
 }
+
+.painel {
+  display: none;
+}
+
+@media (min-width: 1250px) {
+  .painel {
+    display: block;
+  }
+}

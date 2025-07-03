@@ -101,7 +101,7 @@ export default function Contato() {
             name='mensagem'
             value={form.mensagem}
             onChange={handleChange}
-            placeholder='Escreva sua mensagem'
+            placeholder='Escreva sua mensagem*'
             rows={5}
             className='h-[140px] resize-none border border-gray-600 rounded-sm p-2 hover:opacity-50 transition-all duration-300'
           />
