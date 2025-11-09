@@ -2,6 +2,7 @@ import ImageProjetoPortfolio from '@/assets/image-projeto-portfolio.png';
 import ImageProjetoJornadaenem from '@/assets/image-projeto-jornadaenem.png';
 import ImageProjetoMedservefront from '@/assets/image-projeto-medservefront.png';
 import ImageProjetoPokemonTCG from '@/assets/image-projeto-pokemontcg.png';
+import ImageProjetoWeatherForecast from '@/assets/image-projeto-weatherforecast.png';
 
 export const projetos = [
   {
@@ -31,5 +32,12 @@ export const projetos = [
     href: 'https://bucolic-croquembouche-57e631.netlify.app/',
     descricao: 'Aplicação responsiva que lista cartas do Pokémon TCG via API pública. Criado em 2 dias para processo seletivo, com foco em integração de dados e UI clara.',
     tecnologias: 'TypeScript, Next.js, React, Tailwind CSS, CSS, Netlify'
+  },
+  {
+    nome: 'Weather Forecast',
+    src: ImageProjetoWeatherForecast,
+    href: 'https://weather-forecast-brown-theta-82.vercel.app/',
+    descricao: 'Uma aplicação de previsão do tempo. A aplicação exibe a previsão horária do tempo, permitindo que o usuário selecione o dia da semana e veja as temperaturas e condições climáticas correspondentes. Além disso, possui suporte a multilínguas, atualmente português e inglês.',
+    tecnologias: 'TypeScript, Next.js, React, Tailwind CSS, Vercel, API '
   }
 ];

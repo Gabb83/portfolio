@@ -10,7 +10,6 @@ export default function Page() {
   return(
     <div className='py-2'>
       <div className='px-[30px]'>
-        <Header />
         <SectionWrapper>
           <Home />
         </SectionWrapper>
