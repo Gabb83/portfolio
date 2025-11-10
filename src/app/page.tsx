@@ -1,4 +1,3 @@
-import Header from '@/components/Header';
 import Home from '@/components/home/Home';
 import Skills from '@/components/skills/Skills';
 import Experience from '@/components/experience/Experience';
