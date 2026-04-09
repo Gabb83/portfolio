@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from 'next/image';
  
 type PropsCardSkills = {
-  src: StaticImageData;
+  src: StaticImageData | any;
   alt: string;
 };
  

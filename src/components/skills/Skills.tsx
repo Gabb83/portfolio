@@ -6,6 +6,9 @@ import IconTail from '@/assets/icons/tech/icons8-tailwind-css.svg';
 import IconBootstrap from '@/assets/icons/tech/icons8-bootstrap.svg';
 import IconReact from '@/assets/icons/tech/icons8-reagir.svg';
 import IconNext from '@/assets/icons/tech/icons8-nextjs.svg';
+import IconPostgres from '@/assets/icons/tech/postgresql-icon.svg';
+import IconNest from '@/assets/icons/tech/icons-nest.svg';
+
 import CardSkills from './CardSkills';
  
 const Techs = [
@@ -17,7 +20,11 @@ const Techs = [
   { nome: 'Bootstrap', src: IconBootstrap },
   { nome: 'React', src: IconReact },
   { nome: 'Next.js', src: IconNext },
+  {nome: 'Postgres', src: IconPostgres },
+  {nome: 'Nest.js', src: IconNest },
 ];
+
+{console.log('IconHtml:', IconHtml)}
  
 export default function Skills() {
   return (
@@ -29,7 +36,7 @@ export default function Skills() {
         </p>
         <h2 className="text-3xl font-bold">Skills</h2>
         <div className="w-10 h-[2px] bg-green-600 rounded-full mx-auto mt-3" />
-      </div>
+      </div>        
  
       {/* Grid de cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-3xl mx-auto px-2">
