@@ -9,22 +9,19 @@ export default function Page() {
   return(
     <div className='py-2'>
       <div className='px-[30px]'>
-        <SectionWrapper>
+        
           <Home />
-        </SectionWrapper>
-        <SectionWrapper delay={0.2}>
+        
           <Experience />
-        </SectionWrapper>
-        <SectionWrapper delay={0.2}>
+        
           <Skills />
-        </SectionWrapper>
+      
       </div>
-      <SectionWrapper delay={0.2}>
+     
         <Contact />
-      </SectionWrapper>
-      <SectionWrapper delay={0.2}>
+
         <Footer />
-      </SectionWrapper>
+
     </div>
   );
 }

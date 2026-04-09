@@ -1,110 +1,176 @@
 'use client';
-
+ 
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { useTheme } from '@/context/ThemeContext';
 import IconSol from '@/assets/icons/modo/icons8-sol.svg';
 import IconSolNeon from '@/assets/icons/modo/icons8-sol-neon.svg';
 import IconLua from '@/assets/icons/modo/icons8-lua.png';
 import IconLuaNeon from '@/assets/icons/modo/icons8-lua-neon.png';
-import { Menu, X } from 'lucide-react';
-
+ 
+const NAV_ITEMS = ['Home', 'Skills', 'Experience', 'Contact'] as const;
+ 
 export default function Header() {
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, toggleDarkMode } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleButtonDarkMode = () => {
-    setDarkMode((prev) => !prev);
-  };
-
+  const [scrolled, setScrolled] = useState(false);
+ 
   useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode) {
-      root.classList.add('dark');
-      root.style.setProperty('--card-bg-light', '#1a202c');
-      root.style.setProperty('--card-bg-dark', '#2d3748');
-    } else {
-      root.classList.remove('dark');
-      root.style.setProperty('--card-bg-light', '#ffffff');
-      root.style.setProperty('--card-bg-dark', '#f7fafc');
-    }
-  }, [darkMode]);
-
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+ 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [menuOpen]);
+ 
+  const DarkModeToggle = ({ compact = false }: { compact?: boolean }) => (
+    <div className={`flex items-center ${compact ? 'gap-1.5' : 'gap-2'}`}>
+      <Image
+        alt="sol"
+        src={darkMode ? IconSolNeon : IconSol}
+        className={compact ? 'w-[20px]' : 'w-[24px]'}
+      />
+      <button
+        onClick={toggleDarkMode}
+        aria-label="Alternar tema"
+        className={`relative flex items-center p-[2px] rounded-full cursor-pointer transition-colors duration-300
+          ${compact ? 'w-[38px] h-[20px]' : 'w-[44px] h-[24px]'}
+          ${darkMode ? 'bg-gray-600' : 'bg-gray-300'}`}
+      >
+        <div
+          className={`rounded-full transition-all duration-500
+            ${compact ? 'w-[14px] h-[14px]' : 'w-[18px] h-[18px]'}
+            ${darkMode ? 'bg-green-400 shadow-[0_0_6px_1px_rgba(34,197,94,0.6)]' : 'bg-white'}
+            ${darkMode && !compact ? 'translate-x-[22px]' : ''}
+            ${darkMode && compact ? 'translate-x-[16px]' : ''}
+            ${!darkMode ? 'translate-x-0' : ''}
+          `}
+        />
+      </button>
+      <Image
+        alt="lua"
+        src={darkMode ? IconLuaNeon : IconLua}
+        className={compact ? 'w-[20px]' : 'w-[24px]'}
+      />
+    </div>
+  );
+ 
   return (
-    <header className='relative z-50'>
-      {/* Top bar */}
-      <div className='flex justify-between items-center py-4 px-2'>
-        <button className='md:hidden' onClick={() => setMenuOpen(true)}>
-          <Menu className='cursor-pointer'/>
-        </button>
-
-        <h1 className='text-xl font-bold'>
-          <span>&lt;</span>Gabriel Evangelista<span> /&gt;</span>
+    <header className="relative z-50">
+      {/* Desktop */}
+      <div
+        className={`hidden md:flex justify-between items-center py-3 px-6 rounded-xl transition-all duration-300
+          ${scrolled
+            ? 'border border-white/10 dark:border-white/5 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-sm'
+            : 'border border-transparent bg-transparent'
+          }`}
+      >
+        <h1 className="text-lg font-bold tracking-tight">
+          <span className="text-green-600">&lt;</span>
+          Gabriel Evangelista
+          <span className="text-green-600"> /&gt;</span>
         </h1>
-
-        <div className='hidden md:flex items-center gap-8 font-semibold'>
-          {['Home', 'Skills', 'Experience', 'Contact'].map((item) => (
+ 
+        <nav className="flex items-center gap-7">
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}
-              className='relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full'
+              className="relative text-sm font-medium text-gray-600 dark:text-gray-300
+                hover:text-black dark:hover:text-white transition-colors duration-200
+                after:absolute after:bottom-[-3px] after:left-0 after:h-[1.5px] after:w-0
+                after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
             >
               {item}
             </Link>
           ))}
-          <div className='flex items-center gap-2'>
-            <Image alt='ícone sol' src={!darkMode ? IconSol : IconSolNeon} className='w-[30px]' />
-            <div
-              className='w-[50px] h-[26px] rounded-full bg-gray-300 dark:bg-gray-700 flex items-center p-[2px] cursor-pointer'
-              onClick={handleButtonDarkMode}
-            >
-              <div
-                className={`w-[22px] h-[22px] rounded-full transition-transform duration-700 ${
-                  darkMode ? 'translate-x-[24px] bg-black' : 'translate-x-0 bg-white'
-                }`}
-              />
-            </div>
-            <Image alt='ícone lua' src={!darkMode ? IconLua : IconLuaNeon} className='w-[30px]' />
-          </div>
+        </nav>
+ 
+        <div className="flex items-center gap-3">
+          <div className="h-4 w-[0.5px] bg-gray-200 dark:bg-gray-700" />
+          <DarkModeToggle />
         </div>
       </div>
+ 
+      {/* Mobile bar */}
+      <div className="flex md:hidden justify-between items-center py-3 px-2">
+        <button
+          onClick={() => setMenuOpen(true)}
+          aria-label="Abrir menu"
+          className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+        >
+          <Menu size={22} />
+        </button>
+ 
+        <h1 className="text-base font-bold tracking-tight">
+          <span className="text-green-600">&lt;</span>
+          GE
+          <span className="text-green-600"> /&gt;</span>
+        </h1>
+ 
+        <DarkModeToggle compact />
+      </div>
+ 
+      {/* Overlay */}
       <div
-        className={`fixed top-0 left-0 h-full w-64  bg-opacity-100 rounded-r-2xl shadow-lg transform transition-transform duration-300 ease-in-out ${
-          menuOpen ? 'translate-x-0' : '-translate-x-full'}
-          ${darkMode ? 'dark:bg-zinc-900' : 'bg-white'} md:hidden`}
+        onClick={() => setMenuOpen(false)}
+        className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden
+          ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+      />
+ 
+      {/* Drawer mobile */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 z-50 rounded-r-2xl shadow-xl
+          transform transition-transform duration-300 ease-in-out md:hidden
+          ${menuOpen ? 'translate-x-0' : '-translate-x-full'}
+          ${darkMode ? 'bg-zinc-900 text-white' : 'bg-white text-black'}`}
       >
-        <div className='flex justify-between items-center p-4 border-b border-gray-200 dark:border-zinc-700'>
-          <h2 className='text-lg font-bold'>Menu</h2>
-          <button onClick={() => setMenuOpen(false)}>
-            <X className={`${!darkMode ? 'text-black' : 'dark:text-white' } cursor-pointer`} />
+        <div className="flex justify-between items-center px-4 py-4 border-b border-gray-100 dark:border-zinc-800">
+          <h2 className="text-sm font-bold">
+            <span className="text-green-600">&lt;</span>
+            Menu
+            <span className="text-green-600"> /&gt;</span>
+          </h2>
+          <button
+            onClick={() => setMenuOpen(false)}
+            aria-label="Fechar menu"
+            className="w-7 h-7 flex items-center justify-center rounded-full
+              bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700
+              transition-colors cursor-pointer"
+          >
+            <X size={14} />
           </button>
         </div>
-        <nav className='flex flex-col p-4 gap-4 font-semibold'>
-          {['Home', 'Skills', 'Experience', 'Contact'].map((item) => (
+ 
+        <nav className="flex flex-col p-3 gap-1">
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}
-              className='hover:text-green-600 duration-200'
               onClick={() => setMenuOpen(false)}
+              className="px-3 py-2.5 rounded-lg text-sm font-medium
+                text-gray-600 dark:text-gray-300
+                hover:bg-gray-50 dark:hover:bg-zinc-800
+                hover:text-green-600 dark:hover:text-green-400
+                transition-all duration-200"
             >
               {item}
             </Link>
           ))}
-          <div className='flex items-center gap-2 mt-4'>
-            <Image alt='ícone sol' src={!darkMode ? IconSol : IconSolNeon} className='w-[25px]' />
-            <div
-              className='w-[50px] h-[26px] rounded-full bg-gray-300 dark:bg-gray-700 flex items-center p-[2px] cursor-pointer'
-              onClick={handleButtonDarkMode}
-            >
-              <div
-                className={`w-[22px] h-[22px] rounded-full transition-transform duration-700 ${
-                  darkMode ? 'translate-x-[24px] bg-black' : 'translate-x-0 bg-white'
-                }`}
-              />
-            </div>
-            <Image alt='ícone lua' src={!darkMode ? IconLua : IconLuaNeon} className='w-[25px]' />
-          </div>
         </nav>
+ 
+        <div className="absolute bottom-0 left-0 right-0 px-4 py-4 border-t border-gray-100 dark:border-zinc-800">
+          <DarkModeToggle compact />
+        </div>
       </div>
     </header>
   );
