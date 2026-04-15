@@ -55,7 +55,7 @@ export default function Home() {
           <span className="text-gray-500 dark:text-gray-400">Eu sou </span>
           <span className="text-green-600">
             <TypeAnimation
-              sequence={[3800, 'Desenvolvedor Front-end']}
+              sequence={[3800, 'Desenvolvedor Fullstack']}
               speed={60}
               repeat={0}
             />
