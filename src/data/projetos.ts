@@ -3,6 +3,7 @@ import ImageProjetoJornadaenem from '@/assets/image-projeto-jornadaenem.png';
 import ImageProjetoMedservefront from '@/assets/image-projeto-medservefront.png';
 import ImageProjetoPokemonTCG from '@/assets/image-projeto-pokemontcg.png';
 import ImageProjetoWeatherForecast from '@/assets/image-projeto-weatherforecast.png';
+import ImageProjetoPOMO from '@/assets/image-projeto-pomodoro.png';
 
 export const projetos = [
   {
@@ -20,6 +21,20 @@ export const projetos = [
     tecnologias: 'TypeScript, Next.js, Nest.js, React, Tailwind CSS, Vercel'
   },
   {
+    nome: 'POMO',
+    src: ImageProjetoPOMO,
+    href: '#',
+    descricao: 'O POMO. É uma ferramenta de gerenciamento de tempo baseada na técnica Pomodoro, projetada com foco em minimalismo, estética moderna e funcionalidade em tela única (Zero Scroll).',
+    tecnologias: 'Next.js 15, Tailwind CSS, Lucide/React Icons, TypeScript',
+  },
+  {
+    nome: 'Weather Forecast',
+    src: ImageProjetoWeatherForecast,
+    href: 'https://weather-forecast-brown-theta-82.vercel.app/',
+    descricao: 'Uma aplicação de previsão do tempo. A aplicação exibe a previsão horária do tempo, permitindo que o usuário selecione o dia da semana e veja as temperaturas e condições climáticas correspondentes. Além disso, possui suporte a multilínguas, atualmente português e inglês.',
+    tecnologias: 'TypeScript, Next.js, React, Tailwind CSS, Vercel, API '
+  },
+  {
     nome: 'medservefront',
     src: ImageProjetoMedservefront,
     href: '#',
@@ -33,11 +48,4 @@ export const projetos = [
     descricao: 'Aplicação responsiva que lista cartas do Pokémon TCG via API pública. Criado em 2 dias para processo seletivo, com foco em integração de dados e UI clara.',
     tecnologias: 'TypeScript, Next.js, React, Tailwind CSS, CSS, Netlify'
   },
-  {
-    nome: 'Weather Forecast',
-    src: ImageProjetoWeatherForecast,
-    href: 'https://weather-forecast-brown-theta-82.vercel.app/',
-    descricao: 'Uma aplicação de previsão do tempo. A aplicação exibe a previsão horária do tempo, permitindo que o usuário selecione o dia da semana e veja as temperaturas e condições climáticas correspondentes. Além disso, possui suporte a multilínguas, atualmente português e inglês.',
-    tecnologias: 'TypeScript, Next.js, React, Tailwind CSS, Vercel, API '
-  }
 ];
