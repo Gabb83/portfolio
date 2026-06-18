@@ -7,13 +7,6 @@ import ImageProjetoPOMO from '@/assets/image-projeto-pomodoro.png';
 
 export const projetos = [
   {
-    nome: 'portfólio',
-    src: ImageProjetoPortfolio,
-    href: '#',
-    descricao: 'Site pessoal onde apresento meus projetos, tecnologias dominadas e trajetória como dev. Foco em UI limpa e navegação simples.',
-    tecnologias: 'TypeScript, Next.js, React, Tailwind CSS'
-  },
-  {
     nome: 'jornada enem',
     src: ImageProjetoJornadaenem,
     href: 'https://jornada-enem.vercel.app/',
@@ -23,9 +16,16 @@ export const projetos = [
   {
     nome: 'POMO',
     src: ImageProjetoPOMO,
-    href: '#',
+    href: 'https://github.com/Gabb83/pomodoro',
     descricao: 'O POMO. É uma ferramenta de gerenciamento de tempo baseada na técnica Pomodoro, projetada com foco em minimalismo, estética moderna e funcionalidade em tela única (Zero Scroll).',
     tecnologias: 'Next.js 15, Tailwind CSS, Lucide/React Icons, TypeScript',
+  },
+  {
+    nome: 'medservefront',
+    src: ImageProjetoMedservefront,
+    href: '#',
+    descricao: 'Plataforma web para gestão de clínicas médicas. Permite controle de pacientes, médicos e consultas, com interface responsiva e integração com API Java.',
+    tecnologias: 'TypeScript, Next.js, React, Tailwind CSS'
   },
   {
     nome: 'Weather Forecast',
@@ -35,10 +35,10 @@ export const projetos = [
     tecnologias: 'TypeScript, Next.js, React, Tailwind CSS, Vercel, API '
   },
   {
-    nome: 'medservefront',
-    src: ImageProjetoMedservefront,
+    nome: 'portfólio',
+    src: ImageProjetoPortfolio,
     href: '#',
-    descricao: 'Plataforma web para gestão de clínicas médicas. Permite controle de pacientes, médicos e consultas, com interface responsiva e integração com API Java.',
+    descricao: 'Site pessoal onde apresento meus projetos, tecnologias dominadas e trajetória como dev. Foco em UI limpa e navegação simples.',
     tecnologias: 'TypeScript, Next.js, React, Tailwind CSS'
   },
   {
