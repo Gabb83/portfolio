@@ -28,20 +28,33 @@ const Techs = [
  
 export default function Skills() {
   return (
-    <section id="skills" className="py-16">
+    <section id="skills" className="relative py-20 px-0">
+      {/* Glow Effect de fundo */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-green-500/10 dark:bg-green-500/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+
       {/* Título */}
-      <div className="text-center mb-12">
-        <p className="text-xs font-semibold tracking-[0.2em] text-green-600 uppercase mb-2">
-          O que eu uso
-        </p>
-        <h2 className="text-3xl font-bold">Skills</h2>
-        <div className="w-10 h-[2px] bg-green-600 rounded-full mx-auto mt-3" />
-      </div>        
- 
+      <div className="text-center mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 text-xs font-semibold mb-3">
+          <span>O que eu uso</span>
+        </div>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          Habilidades & Tecnologias
+        </h2>
+        <div className="w-12 h-[2.5px] bg-gradient-to-r from-green-500 to-emerald-400 rounded-full mx-auto mt-4" />
+      </div>
+
       {/* Grid de cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-3xl mx-auto px-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mx-auto px-30">
         {Techs.map(({ nome, src }) => (
-          <CardSkills key={nome} alt={nome} src={src} />
+          <div
+            key={nome}
+            className="group relative flex flex-col items-center justify-center p-5 rounded-2xl bg-white/70 dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800/80 backdrop-blur-md shadow-sm hover:shadow-xl hover:shadow-green-500/10 hover:border-green-500/50 dark:hover:border-green-500/50 hover:-translate-y-1 active:scale-95 transition-all duration-300"
+          >
+            <CardSkills alt={nome} src={src} />
+            <span className="mt-3 text-xs font-semibold text-zinc-600 dark:text-zinc-400 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-200">
+              {nome}
+            </span>
+          </div>
         ))}
       </div>
     </section>

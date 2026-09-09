@@ -37,122 +37,137 @@ export default function Experience() {
  
   return (
     <section
-      id="experience"
-      className="py-16 bg-[#1e1e22] text-white rounded-2xl overflow-hidden"
-    >
-      {/* Título */}
-      <div className="text-center mb-12">
-        <p className="text-xs font-semibold tracking-[0.2em] text-green-500 uppercase mb-2">
-          O que eu construí
-        </p>
-        <h2 className="text-3xl font-bold">Projetos</h2>
-        <div className="w-10 h-[2px] bg-green-500 rounded-full mx-auto mt-3" />
+  id="experience"
+  className="relative py-20 px-6 lg:px-0 bg-zinc-900/60 text-white rounded-3xl border border-zinc-800/80 backdrop-blur-xl overflow-hidden my-12"
+>
+  {/* Glow Effect de fundo */}
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-green-500/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+
+  {/* Título */}
+  <div className="text-center mb-16">
+    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-semibold mb-3">
+      <span>O que eu construí</span>
+    </div>
+    <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+      Projetos em Destaque
+    </h2>
+    <div className="w-12 h-[2.5px] bg-gradient-to-r from-green-500 to-emerald-400 rounded-full mx-auto mt-4" />
+  </div>
+
+  {/* Layout principal */}
+  <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto px-4 md:px-8 items-stretch">
+
+    {/* Carrossel */}
+    <div className="relative w-full lg:w-3/5 flex flex-col justify-between gap-5">
+      <div className="relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/80 shadow-2xl shadow-black/40 group">
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            initial={{ opacity: 0, x: direction * 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction * -40 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            onMouseEnter={() =>
+              setHoveredProject({
+                descricao: projeto.descricao,
+                tecnologias: projeto.tecnologias.split(',').map((t) => t.trim()),
+              })
+            }
+            onMouseLeave={() => setHoveredProject(null)}
+          >
+            <CardProjeto
+              alt={projeto.nome}
+              src={projeto.src}
+              href={projeto.href}
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
- 
-      {/* Layout principal */}
-      <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto px-6 md:px-8 items-stretch">
- 
-        {/* Carrossel */}
-        <div className="relative w-full md:w-3/5 flex flex-col gap-4">
-          <div className="relative overflow-hidden rounded-xl">
-            <AnimatePresence mode="wait" custom={direction}>
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                initial={{ opacity: 0, x: direction * 60 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: direction * -60 }}
-                transition={{ duration: 0.35, ease: 'easeInOut' }}
-                onMouseEnter={() =>
-                  setHoveredProject({
-                    descricao: projeto.descricao,
-                    tecnologias: projeto.tecnologias.split(',').map((t) => t.trim()),
-                  })
-                }
-                onMouseLeave={() => setHoveredProject(null)}
-              >
-                <CardProjeto
-                  alt={projeto.nome}
-                  src={projeto.src}
-                  href={projeto.href}
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
- 
-          {/* Controles */}
-          <div className="flex items-center justify-between px-1">
-            {/* Dots */}
-            <div className="flex gap-2">
-              {Array.from({ length: totalSlides }).map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => goTo(idx)}
-                  className={`rounded-full transition-all duration-300 cursor-pointer ${
-                    idx === currentIndex
-                      ? 'w-5 h-2 bg-green-500'
-                      : 'w-2 h-2 bg-white/20 hover:bg-white/40'
-                  }`}
-                />
-              ))}
-            </div>
- 
-            {/* Setas */}
-            <div className="flex gap-2">
-              <button
-                onClick={prevSlide}
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-green-500/30 hover:border-green-500 border border-white/10 transition-all duration-300 cursor-pointer"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-green-500/30 hover:border-green-500 border border-white/10 transition-all duration-300 cursor-pointer"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-          </div>
+
+      {/* Controles */}
+      <div className="flex items-center justify-between px-2 pt-1">
+        {/* Dots */}
+        <div className="flex items-center gap-2">
+          {Array.from({ length: totalSlides }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goTo(idx)}
+              className={`rounded-full transition-all duration-300 cursor-pointer ${
+                idx === currentIndex
+                  ? 'w-6 h-2 bg-gradient-to-r from-green-500 to-emerald-400'
+                  : 'w-2 h-2 bg-zinc-700 hover:bg-zinc-500'
+              }`}
+            />
+          ))}
         </div>
- 
-        {/* Painel lateral */}
-        <div className="w-full md:w-2/5 bg-[#141416] rounded-2xl p-6 border border-white/5 flex flex-col gap-6">
- 
-          {/* Nome do projeto */}
-          <div>
-            <p className="text-xs text-white/30 uppercase tracking-widest mb-1">Projeto</p>
-            <h3 className="text-xl font-semibold text-white">{projeto.nome}</h3>
-          </div>
- 
-          {/* Divisor */}
-          <div className="h-[0.5px] bg-white/10" />
- 
-          {/* Descrição */}
-          <div>
-            <p className="text-xs text-white/30 uppercase tracking-widest mb-2">Descrição</p>
-            <p className="text-gray-400 text-sm leading-relaxed min-h-[80px]">
-              {hoveredProject?.descricao || projeto.descricao || 'Passe o mouse sobre o projeto para ver a descrição.'}
-            </p>
-          </div>
- 
-          {/* Tecnologias */}
-          <div>
-            <p className="text-xs text-white/30 uppercase tracking-widest mb-3">Tecnologias</p>
-            <div className="flex flex-wrap gap-2">
-              {(hoveredProject?.tecnologias ?? projeto.tecnologias.split(',').map((t) => t.trim())).map(
-                (tec, idx) => (
-                  <span
-                    key={idx}
-                    className="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300"
-                  >
-                    {tec}
-                  </span>
-                )
-              )}
-            </div>
-          </div>
+
+        {/* Setas */}
+        <div className="flex items-center gap-2.5">
+          <button
+            onClick={prevSlide}
+            className="w-10 h-10 flex items-center justify-center rounded-xl bg-zinc-800/80 hover:bg-green-600/20 border border-zinc-700/80 hover:border-green-500/50 text-zinc-300 hover:text-green-400 active:scale-95 transition-all duration-300 cursor-pointer shadow-sm"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="w-10 h-10 flex items-center justify-center rounded-xl bg-zinc-800/80 hover:bg-green-600/20 border border-zinc-700/80 hover:border-green-500/50 text-zinc-300 hover:text-green-400 active:scale-95 transition-all duration-300 cursor-pointer shadow-sm"
+          >
+            <ChevronRight size={18} />
+          </button>
         </div>
       </div>
-    </section>
+    </div>
+
+    {/* Painel lateral */}
+    <div className="w-full lg:w-2/5 rounded-2xl bg-zinc-950/70 border border-zinc-800/80 p-6 md:p-8 backdrop-blur-md flex flex-col justify-between gap-6 shadow-xl shadow-black/20">
+
+      <div className="space-y-6">
+        {/* Nome do projeto */}
+        <div>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1 block">
+            Projeto
+          </span>
+          <h3 className="text-2xl font-bold tracking-tight text-white">
+            {projeto.nome}
+          </h3>
+        </div>
+
+        <div className="h-[1px] bg-zinc-800/80" />
+
+        {/* Descrição */}
+        <div>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2 block">
+            Sobre
+          </span>
+          <p className="text-zinc-400 text-sm leading-relaxed min-h-[90px]">
+            {hoveredProject?.descricao || projeto.descricao || 'Passe o mouse sobre o projeto para ver a descrição.'}
+          </p>
+        </div>
+      </div>
+
+      {/* Tecnologias */}
+      <div className="pt-4 border-t border-zinc-800/80">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-3 block">
+          Tecnologias Utilizadas
+        </span>
+        <div className="flex flex-wrap gap-2">
+          {(hoveredProject?.tecnologias ?? projeto.tecnologias.split(',').map((t) => t.trim())).map(
+            (tec, idx) => (
+              <span
+                key={idx}
+                className="text-xs font-medium px-3 py-1 rounded-xl bg-zinc-800/60 border border-zinc-700/60 text-zinc-300 shadow-sm"
+              >
+                {tec}
+              </span>
+            )
+          )}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
   );
 }
