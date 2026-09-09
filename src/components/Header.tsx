@@ -65,113 +65,113 @@ export default function Header() {
   );
  
   return (
-    <header className="relative z-50">
-      {/* Desktop */}
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 transition-all duration-300">
+      {/* Desktop Nav */}
       <div
-        className={`hidden md:flex justify-between items-center py-3 px-6 rounded-xl transition-all duration-300
-          ${scrolled
-            ? 'border border-white/10 dark:border-white/5 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-sm'
+        className={`hidden md:flex items-center justify-between max-w-6xl mx-auto py-2.5 px-6 rounded-2xl transition-all duration-300 ${
+          scrolled
+            ? 'border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md shadow-lg shadow-black/5'
             : 'border border-transparent bg-transparent'
-          }`}
+        }`}
       >
-        <h1 className="text-lg font-bold tracking-tight">
-          <span className="text-green-600">&lt;</span>
-          Gabriel Evangelista
-          <span className="text-green-600"> /&gt;</span>
-        </h1>
- 
-        <nav className="flex items-center gap-7">
+        <Link href="#home" className="group flex items-center gap-1 text-base font-bold tracking-tight text-zinc-900 dark:text-white">
+          <span className="text-green-500 transition-transform group-hover:-translate-x-0.5">&lt;</span>
+          <span>Gabriel Evangelista</span>
+          <span className="text-green-500 transition-transform group-hover:translate-x-0.5"> /&gt;</span>
+        </Link>
+
+        <nav className="flex items-center gap-1 bg-zinc-100/50 dark:bg-zinc-800/40 p-1 rounded-full border border-zinc-200/50 dark:border-zinc-700/40 backdrop-blur-sm">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="relative text-sm font-medium text-gray-600 dark:text-gray-300
-                hover:text-black dark:hover:text-white transition-colors duration-200
-                after:absolute after:bottom-[-3px] after:left-0 after:h-[1.5px] after:w-0
-                after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
+              className="px-4 py-1.5 rounded-full text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-white dark:hover:bg-zinc-800 shadow-none hover:shadow-sm transition-all duration-200"
             >
               {item}
             </Link>
           ))}
         </nav>
- 
+
         <div className="flex items-center gap-3">
-          <div className="h-4 w-[0.5px] bg-gray-200 dark:bg-gray-700" />
+          <div className="h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800" />
           <DarkModeToggle />
         </div>
       </div>
- 
-      {/* Mobile bar */}
-      <div className="flex md:hidden justify-between items-center py-3 px-2">
+
+      {/* Mobile Top Bar */}
+      <div
+        className={`flex md:hidden items-center justify-between py-2.5 px-4 rounded-2xl transition-all duration-300 ${
+          scrolled
+            ? 'border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md shadow-lg shadow-black/5'
+            : 'border border-transparent bg-transparent'
+        }`}
+      >
         <button
           onClick={() => setMenuOpen(true)}
           aria-label="Abrir menu"
-          className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+          className="p-2 rounded-xl text-zinc-700 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
         >
-          <Menu size={22} />
+          <Menu size={20} />
         </button>
- 
-        <h1 className="text-base font-bold tracking-tight">
-          <span className="text-green-600">&lt;</span>
+
+        <Link href="#home" className="text-base font-bold tracking-tight text-zinc-900 dark:text-white">
+          <span className="text-green-500">&lt;</span>
           GE
-          <span className="text-green-600"> /&gt;</span>
-        </h1>
- 
+          <span className="text-green-500"> /&gt;</span>
+        </Link>
+
         <DarkModeToggle compact />
       </div>
- 
-      {/* Overlay */}
+
+      {/* Backdrop Overlay */}
       <div
         onClick={() => setMenuOpen(false)}
-        className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden
-          ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${
+          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
       />
- 
-      {/* Drawer mobile */}
-      <div
-        className={`fixed top-0 left-0 h-full w-64 z-50 rounded-r-2xl shadow-xl
-          transform transition-transform duration-300 ease-in-out md:hidden
-          ${menuOpen ? 'translate-x-0' : '-translate-x-full'}
-          ${darkMode ? 'bg-zinc-900 text-white' : 'bg-white text-black'}`}
+
+      {/* Mobile Drawer */}
+      <aside
+        className={`fixed top-0 left-0 h-full w-72 z-50 p-6 flex flex-col justify-between border-r border-zinc-200/80 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-2xl transform transition-transform duration-300 ease-out md:hidden ${
+          menuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
       >
-        <div className="flex justify-between items-center px-4 py-4 border-b border-gray-100 dark:border-zinc-800">
-          <h2 className="text-sm font-bold">
-            <span className="text-green-600">&lt;</span>
-            Menu
-            <span className="text-green-600"> /&gt;</span>
-          </h2>
-          <button
-            onClick={() => setMenuOpen(false)}
-            aria-label="Fechar menu"
-            className="w-7 h-7 flex items-center justify-center rounded-full
-              bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700
-              transition-colors cursor-pointer"
-          >
-            <X size={14} />
-          </button>
-        </div>
- 
-        <nav className="flex flex-col p-3 gap-1">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item}
-              href={`#${item.toLowerCase()}`}
+        <div>
+          <div className="flex justify-between items-center pb-6 border-b border-zinc-100 dark:border-zinc-800">
+            <h2 className="text-sm font-bold tracking-tight text-zinc-900 dark:text-white">
+              <span className="text-green-500">&lt;</span>
+              Navegação
+              <span className="text-green-500"> /&gt;</span>
+            </h2>
+            <button
               onClick={() => setMenuOpen(false)}
-              className="px-3 py-2.5 rounded-lg text-sm font-medium
-                text-gray-600 dark:text-gray-300
-                hover:bg-gray-50 dark:hover:bg-zinc-800
-                hover:text-green-600 dark:hover:text-green-400
-                transition-all duration-200"
+              aria-label="Fechar menu"
+              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
             >
-              {item}
-            </Link>
-          ))}
-        </nav>
- 
-        <div className="absolute bottom-0 left-0 right-0 px-4 py-4 border-t border-gray-100 dark:border-zinc-800">
+              <X size={16} />
+            </button>
+          </div>
+
+          <nav className="flex flex-col gap-1.5 mt-6">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                onClick={() => setMenuOpen(false)}
+                className="px-4 py-3 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-500/10 transition-all duration-200"
+              >
+                {item}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+          <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Tema</span>
           <DarkModeToggle compact />
         </div>
-      </div>
+      </aside>
     </header>
   );
 }
