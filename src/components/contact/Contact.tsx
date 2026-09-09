@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Send } from 'lucide-react';
+import { Clock, MapPin, Send, Sparkles } from 'lucide-react';
  
 import Input from './Input';
 import IconGitHub from '@/assets/icons/redes/icon-github.svg';
@@ -73,126 +73,123 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-16 px-6 lg:px-0 bg-[var(--contato-bg-light)] dark:bg-[var(--contato-bg-dark)]"
+      className="relative py-20 px-6 lg:px-0 bg-zinc-50/50 dark:bg-zinc-950/50 overflow-hidden"
     >
+      <div className="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-green-500/10 dark:bg-green-500/10 blur-[120px] rounded-full pointer-events-none -z-10" />
+
       {/* Título */}
-      <div className="text-center mb-12">
-        <p className="text-xs font-semibold tracking-[0.2em] text-green-600 uppercase mb-2">
-          Vamos conversar
-        </p>
-        <h2 className="text-3xl font-bold">Contato</h2>
-        <div className="w-10 h-[2px] bg-green-600 rounded-full mx-auto mt-3" />
+      <div className="text-center mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 text-xs font-semibold mb-3">
+          <span>Vamos conversar</span>
+        </div>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          Entre em Contato
+        </h2>
+        <div className="w-12 h-[2.5px] bg-gradient-to-r from-green-500 to-emerald-400 rounded-full mx-auto mt-4" />
       </div>
- 
-      {/* Layout */}
-      <div className="flex flex-col md:flex-row items-start justify-center gap-12 max-w-4xl mx-auto">
- 
-        {/* Coluna esquerda */}
-        <div className="w-full md:w-[280px] flex-shrink-0">
-          <h3 className="text-xl font-semibold mb-2">Conecte-se comigo</h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
-            Quer discutir oportunidades ou projetos?{' '}
-            <span className="font-semibold text-gray-700 dark:text-gray-200">
-              Mande uma mensagem!
-            </span>
-          </p>
- 
-          {/* Redes */}
-          <div className="flex items-center gap-3">
-            {REDES.map(({ nome, href, src }) => (
-              <Link
-                key={nome}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full
-                  bg-gray-100 dark:bg-zinc-800
-                  hover:bg-green-600 dark:hover:bg-green-600
-                  transition-colors duration-300 group"
-              >
-                <Image
-                  alt={nome}
-                  src={src}
-                  className="w-[20px] group-hover:brightness-0 group-hover:invert transition-all duration-300"
-                />
-              </Link>
-            ))}
+
+      {/* Container Principal */}
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
+        {/* Coluna Esquerda - Info Card */}
+        <div className="md:col-span-5 flex flex-col justify-between p-6 md:p-8 rounded-2xl bg-white/70 dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800/80 backdrop-blur-md shadow-xl shadow-black/5 h-full">
+          <div>
+            <h3 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white mb-2">
+              Conecte-se comigo
+            </h3>
+            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-8">
+              Quer discutir uma oportunidade, novo projeto ou apenas trocar uma ideia?{' '}
+              <span className="font-semibold text-zinc-900 dark:text-zinc-200">
+                Mande uma mensagem!
+              </span>
+            </p>
+
+            <div className="flex items-center gap-3 mb-8">
+              {REDES.map(({ nome, href, src }) => (
+                <Link
+                  key={nome}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200/60 dark:border-zinc-700/60 hover:bg-green-600 dark:hover:bg-green-600 hover:border-green-600 dark:hover:border-green-600 hover:scale-105 active:scale-95 transition-all duration-300 group shadow-sm"
+                >
+                  <Image
+                    alt={nome}
+                    src={src}
+                    className="w-5 h-5 group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
- 
-          {/* Info extra */}
-          <div className="mt-8 space-y-2">
-            <p className="text-xs text-gray-400 dark:text-gray-500">
-              📍 João Pessoa, PB — Brasil
-            </p>
-            <p className="text-xs text-gray-400 dark:text-gray-500">
-              ⏱ Respondo em até 24h
-            </p>
+
+          <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800/80 space-y-3">
+            <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/50 dark:border-zinc-800/50 text-xs font-medium text-zinc-600 dark:text-zinc-300">
+              <MapPin size={16} className="text-green-500 flex-shrink-0" />
+              <span>João Pessoa, PB — Brasil</span>
+            </div>
+            <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/50 dark:border-zinc-800/50 text-xs font-medium text-zinc-600 dark:text-zinc-300">
+              <Clock size={16} className="text-green-500 flex-shrink-0" />
+              <span>Respondo em até 24 horas</span>
+            </div>
           </div>
         </div>
- 
-        {/* Divisor vertical (só desktop) */}
-        <div className="hidden md:block w-[0.5px] self-stretch bg-gray-200 dark:bg-zinc-700" />
- 
-        {/* Formulário */}
-        <div className="w-full md:flex-1 flex flex-col gap-4">
-          {/* Linha nome + email */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {inputs.slice(0, 2).map(({ label, name, value }) => (
-              <Input
-                key={name}
-                label={label}
-                name={name}
-                value={value}
+
+        {/* Coluna Direita - Formulário */}
+        <div className="md:col-span-7 p-6 md:p-8 rounded-2xl bg-white/70 dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800/80 backdrop-blur-md shadow-xl shadow-black/5">
+          <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} className="flex flex-col gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {inputs.slice(0, 2).map(({ label, name, value }) => (
+                <Input
+                  key={name}
+                  label={label}
+                  name={name}
+                  value={value}
+                  onChange={handleChange}
+                />
+              ))}
+            </div>
+
+            <Input
+              label={inputs[2].label}
+              name={inputs[2].name}
+              value={inputs[2].value}
+              onChange={handleChange}
+            />
+
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                Mensagem
+              </label>
+              <textarea
+                name="mensagem"
+                value={form.mensagem}
                 onChange={handleChange}
+                placeholder="Escreva sua mensagem..."
+                rows={4}
+                className="w-full resize-none rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-800/30 p-3.5 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 dark:placeholder:text-zinc-500 focus:outline-none focus:border-green-500 dark:focus:border-green-500 focus:ring-2 focus:ring-green-500/20 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-200"
               />
-            ))}
-          </div>
- 
-          {/* Assunto full width */}
-          <Input
-            label={inputs[2].label}
-            name={inputs[2].name}
-            value={inputs[2].value}
-            onChange={handleChange}
-          />
- 
-          {/* Textarea */}
-          <textarea
-            name="mensagem"
-            value={form.mensagem}
-            onChange={handleChange}
-            placeholder="Escreva sua mensagem..."
-            rows={5}
-            className="w-full resize-none rounded-md border border-gray-300 dark:border-zinc-600
-              bg-transparent p-3 text-sm
-              placeholder:text-gray-400 dark:placeholder:text-gray-500
-              focus:outline-none focus:border-green-500 dark:focus:border-green-500
-              hover:border-gray-400 dark:hover:border-zinc-500
-              transition-colors duration-200"
-          />
- 
-          {/* Footer do form */}
-          <div className="flex items-center justify-between gap-4">
-            {status ? (
-              <p className={`text-sm ${STATUS_STYLE[status] ?? 'text-gray-400'}`}>
-                {status}
-              </p>
-            ) : (
-              <span />
-            )}
- 
-            <button
-              onClick={handleSubmit}
-              disabled={loading}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-md text-sm font-medium
-                text-white bg-green-600 hover:bg-green-700
-                disabled:opacity-60 disabled:cursor-not-allowed
-                cursor-pointer transition-colors duration-300"
-            >
-              <Send size={14} />
-              {loading ? 'Enviando...' : 'Enviar'}
-            </button>
-          </div>
+            </div>
+
+            <div className="flex items-center justify-between gap-4 pt-2">
+              {status ? (
+                <p className={`text-xs font-medium ${STATUS_STYLE[status] ?? 'text-zinc-400'}`}>
+                  {status}
+                </p>
+              ) : (
+                <span />
+              )}
+
+              <button
+                type="submit"
+                onClick={handleSubmit}
+                disabled={loading}
+                className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium text-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-green-500/20 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 overflow-hidden ml-auto cursor-pointer"
+              >
+                <Send size={15} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <span>{loading ? 'Enviando...' : 'Enviar Mensagem'}</span>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
