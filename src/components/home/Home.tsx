@@ -47,7 +47,6 @@ export default function Home() {
 
       <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl z-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 text-xs font-semibold mb-4">
-          <Sparkles size={12} />
           <span>Bem-vindo ao meu portfólio</span>
         </div>
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-white leading-tight">

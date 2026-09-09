@@ -44,7 +44,7 @@ export default function Skills() {
       </div>
 
       {/* Grid de cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mx-auto px-30">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mx-auto px-0 lg:px-30">
         {Techs.map(({ nome, src }) => (
           <div
             key={nome}
