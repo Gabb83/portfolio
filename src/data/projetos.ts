@@ -4,6 +4,7 @@ import ImageProjetoMedservefront from '@/assets/image-projeto-medservefront.png'
 import ImageProjetoPokemonTCG from '@/assets/image-projeto-pokemontcg.png';
 import ImageProjetoWeatherForecast from '@/assets/image-projeto-weatherforecast.png';
 import ImageProjetoPOMO from '@/assets/image-projeto-pomodoro.png';
+import ImageProjetoAlgoMetrics from '@/assets/image-projeto-algometrics.png';
 
 export const projetos = [
   {
@@ -12,6 +13,13 @@ export const projetos = [
     href: 'https://jornada-enem.vercel.app/',
     descricao: 'Aplicação web voltada para estudantes em preparação para o ENEM. Oferece acesso público a provas anteriores, gabaritos, calculadora e cronômetro. Envio de redações e atividades está disponível exclusivamente para escolas parceiras.',
     tecnologias: 'TypeScript, Next.js, Nest.js, React, Tailwind CSS, Vercel'
+  },
+  {
+    nome: 'AlgoMetrics',
+    src: ImageProjetoAlgoMetrics,
+    href: 'https://github.com/Gabb83/algometrics',
+    descricao: 'O AlgoMetrics é um visualizador interativo desenvolvido em Next.js, TypeScript e Tailwind CSS que transforma a lógica abstrata de algoritmos de ordenação em animações gráficas em tempo real. Foi projetado para entender como os algoritmos de ordenação funcionam, proporcionando uma experiência visual imersiva.',
+    tecnologias: 'TypeScript, Next.js, React, Tailwind CSS, Vercel'
   },
   {
     nome: 'POMO',
@@ -41,11 +49,11 @@ export const projetos = [
     descricao: 'Site pessoal onde apresento meus projetos, tecnologias dominadas e trajetória como dev. Foco em UI limpa e navegação simples.',
     tecnologias: 'TypeScript, Next.js, React, Tailwind CSS'
   },
-  {
-    nome: 'pokemón tcg',
-    src: ImageProjetoPokemonTCG,
-    href: 'https://bucolic-croquembouche-57e631.netlify.app/',
-    descricao: 'Aplicação responsiva que lista cartas do Pokémon TCG via API pública. Criado em 2 dias para processo seletivo, com foco em integração de dados e UI clara.',
-    tecnologias: 'TypeScript, Next.js, React, Tailwind CSS, CSS, Netlify'
-  },
+  // {
+  //   nome: 'pokemón tcg',
+  //   src: ImageProjetoPokemonTCG,
+  //   href: 'https://bucolic-croquembouche-57e631.netlify.app/',
+  //   descricao: 'Aplicação responsiva que lista cartas do Pokémon TCG via API pública. Criado em 2 dias para processo seletivo, com foco em integração de dados e UI clara.',
+  //   tecnologias: 'TypeScript, Next.js, React, Tailwind CSS, CSS, Netlify'
+  // },
 ];

@@ -55,7 +55,7 @@ export default function Experience() {
       </div>
 
       {/* Layout principal */}
-      <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto px-4 md:px-8 items-stretch">
+      <div className="flex flex-col lg:flex-row gap-8 mx-auto px-4 md:px-8 items-stretch">
 
         {/* Carrossel */}
         <div className="relative w-full lg:w-3/5 flex flex-col justify-between gap-5">
