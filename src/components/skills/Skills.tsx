@@ -8,23 +8,27 @@ import IconReact from '@/assets/icons/tech/icons8-reagir.svg';
 import IconNext from '@/assets/icons/tech/icons8-nextjs.svg';
 import IconPostgres from '@/assets/icons/tech/postgresql-icon.svg';
 import IconNest from '@/assets/icons/tech/icons-nest.svg';
+import IconAngular from '@/assets/icons/tech/angular-icon-svgrepo-com.svg';
 
 import CardSkills from './CardSkills';
- 
+
+// svg disponível em: https://www.svgrepo.com/vectors/docker/
+
 const Techs = [
-  { nome: 'HTML', src: IconHtml },
-  { nome: 'CSS', src: IconCss },
+  // { nome: 'HTML', src: IconHtml },
+  // { nome: 'CSS', src: IconCss },
   { nome: 'JavaScript', src: IconJs },
   { nome: 'TypeScript', src: IconTs },
-  { nome: 'Tailwind CSS', src: IconTail },
-  { nome: 'Bootstrap', src: IconBootstrap },
+  // { nome: 'Bootstrap', src: IconBootstrap },
+  
   { nome: 'React', src: IconReact },
   { nome: 'Next.js', src: IconNext },
-  {nome: 'Postgres', src: IconPostgres },
-  {nome: 'Nest.js', src: IconNest },
+  { nome: 'Angular', src: IconAngular },
+  { nome: 'Tailwind CSS', src: IconTail },
+  
+  { nome: 'Nest.js', src: IconNest },
+  { nome: 'Postgres', src: IconPostgres },
 ];
-
-{console.log('IconHtml:', IconHtml)}
  
 export default function Skills() {
   return (
