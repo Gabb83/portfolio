@@ -4,4 +4,7 @@ const nextConfig = {
       root: '/home/evang/Projetos/portfolio',
     },
   },
+  images: {
+    qualities: [75, 90, 100],
+  }
 };
