@@ -9,6 +9,9 @@ import IconNext from '@/assets/icons/tech/icons8-nextjs.svg';
 import IconPostgres from '@/assets/icons/tech/postgresql-icon.svg';
 import IconNest from '@/assets/icons/tech/icons-nest.svg';
 import IconAngular from '@/assets/icons/tech/angular-icon-svgrepo-com.svg';
+import IconJava from '@/assets/icons/tech/icons-java.svg';
+import IconSpringBoot from '@/assets/icons/tech/icons-springboot.svg';
+
 
 import CardSkills from './CardSkills';
 
@@ -27,6 +30,8 @@ const Techs = [
   { nome: 'Tailwind CSS', src: IconTail },
   
   { nome: 'Nest.js', src: IconNest },
+  { nome: 'Java', src: IconJava },
+  { nome: 'Spring Boot', src: IconSpringBoot },
   { nome: 'Postgres', src: IconPostgres },
 ];
  

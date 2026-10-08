@@ -32,7 +32,7 @@ export default function CardSkills({ src, alt }: PropsCardSkills) {
       <div className="relative p-2 rounded-xl bg-zinc-100/50 dark:bg-zinc-800/40 border border-zinc-200/50 dark:border-zinc-700/30 group-hover:bg-green-500/10 group-hover:border-green-500/20 transition-all duration-300">
         <Image
           alt={alt}
-          src={src}
+          src={src || null}
           width={40}
           height={40}
           className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110"

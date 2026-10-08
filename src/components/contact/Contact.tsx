@@ -13,7 +13,6 @@ import IconInstagram from '@/assets/icons/redes/icon-instagram.svg';
 const REDES = [
   { nome: 'linkedIn', href: 'https://www.linkedin.com/in/gabriel-evangelista-5a1a5a2aa/', src: IconLinkedin },
   { nome: 'github', href: 'https://github.com/Gabb83', src: IconGitHub },
-  { nome: 'instagram', href: 'https://www.instagram.com/ev.gabrieel/', src: IconInstagram },
 ];
  
 const STATUS_STYLE: Record<string, string> = {

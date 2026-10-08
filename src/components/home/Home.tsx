@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="relative flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20 pt-24 md:pt-20 pb-20 px-6 md:px-12 overflow-hidden"
+      className="relative flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20 pt-26 md:pt-24 pb-20 px-6 md:px-12 overflow-hidden"
     >
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-green-500/10 dark:bg-green-500/15 blur-[120px] rounded-full pointer-events-none -z-10" />
       
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-white leading-tight">
           <TypeAnimation
-            sequence={['Olá, meu nome é ', 800, 'Olá, sou Gabriel']}
+            sequence={['Olá, meu nome é ', 800, 'Gabriel']}
             speed={1}
             wrapper="span"
             repeat={0}
@@ -61,7 +61,7 @@ export default function Home() {
           <span className="text-zinc-500 dark:text-zinc-400">Eu sou </span>
           <span className="bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-transparent">
             <TypeAnimation
-              sequence={[3800, 'Desenvolvedor Fullstack']}
+              sequence={[3800, 'Desenvolvedor Full Stack']}
               speed={60}
               repeat={0}
             />
@@ -69,7 +69,7 @@ export default function Home() {
         </div>
 
         <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed mb-8">
-          Desenvolvo aplicações web ponta a ponta (Fullstack), com especialização em Front-end. Transformo requisitos complexos em sistemas eficientes e intencionais, unindo fundamentação técnica em 
+          Desenvolvo aplicações web ponta a ponta (Full Stack), com especialização em Front-end. Transformo requisitos complexos em sistemas eficientes e intencionais, unindo fundamentação técnica em 
           {" "}<span className="font-semibold text-zinc-900 dark:text-white underline decoration-green-500/50 underline-offset-4">
             Ciência da Computação
           </span> {" "}
